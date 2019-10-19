@@ -36,15 +36,16 @@ cv2.destroyAllWindows()
 
 img.close()
 
-directory = "NEOSSAT/ASTRO/2019/284/"
-
-for filename in os.listdir(directory):
-    if filename.endswith("clean.fits"): 
-        image_file = get_pkg_data_filename(directory  + filename)
-        image_data = fits.getdata(image_file, ext=0)
-        plt.figure()
-        plt.imshow(image_data, cmap='gray')
-        plt.colorbar()
-        print(filename)
-        plt.close()
-
+def read_dirs(directoryList):
+    for item in directoryList:
+        directory = "NEOSSAT/ASTRO/" + item
+    
+        for filename in os.listdir(directory):
+            if filename.endswith("clean.fits"): 
+                image_file = get_pkg_data_filename(directory  + filename)
+                image_data = fits.getdata(image_file, ext=0)
+                plt.figure()
+                plt.imshow(image_data, cmap='gray')
+                plt.colorbar()
+                print(filename)
+                #plt.close()
