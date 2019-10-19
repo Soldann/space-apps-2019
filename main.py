@@ -13,7 +13,7 @@ def read_dirs(paths):
     images = []
     for path in paths:
         
-        directory = "NEOSSAT\\ASTRO\\" + path + "\\"
+        directory = "NEOSSAT/ASTRO/" + path + "/"
     
         for filename in os.listdir(directory):
             if filename.endswith("clean.fits"): 
@@ -35,7 +35,7 @@ def generate_video(img):
     for i in range(len(img)):
         frames.append([plt.imshow(img[i], cmap=cm.Greys_r, animated=True)])
     
-    ani = animation.ArtistAnimation(fig, frames, interval=50, blit=True,
+    ani = animation.ArtistAnimation(fig, frames, interval=250, blit=True,
                                    repeat_delay=1000)
     ani.save('movie.mov')
     plt.show()
@@ -54,6 +54,6 @@ def generate_video(img):
         os.remove(file_name)
     '''
 
-generate_video(read_dirs(["2019\\284"]))
+generate_video(read_dirs(["2019/284"]))
 print("Done!")
 #image_file = get_pkg_data_filename('NEOSSAT/ASTRO/2019/284/NEOS_SCI_2019284114500.fits')
