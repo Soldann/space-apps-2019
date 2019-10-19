@@ -25,7 +25,7 @@ timelapse = {
         "2018-F4" : ["2019/243","2019/244"],
         "2017-T2" : ["2019/243","2019/244"],
         "2019-K5" : ["2019/243","2019/244"],
-        "CK19Q040" : ["2019/" + str(i) for i in range(256, 292)]
+        "CK19Q040" : ["2019/" + str(i) for i in range(256, 293)]
         } # stores directory suffix where each objects pictures are stored
 
 print(timelapse["CK19Q040"])
