@@ -19,10 +19,16 @@ timelapse = {
         "CK19D010" : ["2019/128"],
         "A10dQbl" : ["2019/150"],
         "A10dRr5" : ["2019/150"],
-        "2019-K1" : ["2019/243","2019/244"]
+        "2019-K1" : ["2019/243","2019/244"],
+        "2019-A9" : ["2019/243","2019/244"],
+        "2019-W1" : ["2019/243","2019/244"],
+        "2018-F4" : ["2019/243","2019/244"],
+        "2017-T2" : ["2019/243","2019/244"],
+        "2019-K5" : ["2019/243","2019/244"],
+        "CK19Q040" : ["2019/" + str(i) for i in range(256, 292)]
         } # stores directory suffix where each objects pictures are stored
 
-
+print(timelapse["CK19Q040"])
 img = fits.open('NEOSSAT/ASTRO/2019/284/NEOS_SCI_2019284114500.fits')
 cv2.imshow('image',img[0].data)
 cv2.waitKey(0)
@@ -40,5 +46,5 @@ for filename in os.listdir(directory):
         plt.imshow(image_data, cmap='gray')
         plt.colorbar()
         print(filename)
-        #plt.close()
+        plt.close()
 
