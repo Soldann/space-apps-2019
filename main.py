@@ -6,7 +6,7 @@ import os
 
 def read_dirs(year, numbers):
     for number in numbers:
-        directory = "NEOSSAT/ASTRO/" + year +"/" + number
+        directory = "NEOSSAT/ASTRO/" + str(year) +"/" + str(number)
     
         for filename in os.listdir(directory):
             if filename.endswith("clean.fits"): 
@@ -17,5 +17,19 @@ def read_dirs(year, numbers):
                 plt.colorbar()
                 print(filename)
                 #plt.close()
+def generate_video(img):
+    for i in xrange(len(img)):
+        plt.imshow(img[i], cmap=cm.Greys_r)
+        plt.savefig(folder + "/file%02d.png" % i)
 
+    os.chdir("your_folder")
+    subprocess.call([
+        'ffmpeg', '-framerate', '8', '-i', 'file%02d.png', '-r', '30', '-pix_fmt', 'yuv420p',
+        'video_name.mp4'
+    ])
+    for file_name in glob.glob("*.png"):
+        os.remove(file_name)
+        
+
+read_dirs(2019, [284])
 #image_file = get_pkg_data_filename('NEOSSAT/ASTRO/2019/284/NEOS_SCI_2019284114500.fits')
