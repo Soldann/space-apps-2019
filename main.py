@@ -38,6 +38,19 @@ def read_dirs(paths):
     images = []
     for path in paths:
         directory = "NEOSSAT/ASTRO/" + path + "/"
+    
+        for filename in os.listdir(directory):
+            if filename.endswith("clean.fits"): 
+                image_file = get_pkg_data_filename(directory + filename)
+                image_data = fits.getdata(image_file, ext=0)    
+                images.append(image_data)
+                ''' 
+                plt.figure()
+                plt.imshow(image_data, cmap='gray')
+                plt.colorbar()
+                print(filename)
+                '''
+                #plt.close()
     return images
 
 def generate_video(img):
